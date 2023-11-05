@@ -178,4 +178,23 @@ forge test --gas-report
 ```
 
 ## Result
+1. mint only 3 tokens, transfer tokenId=1 to user2, and approve tokenId=0 to user2.
+![test result](https://github.com/Rita94105/ERC721A/blob/main/img/gas%20usage%20-%20mint%20small%20number.png)
 
+2. mint 100 tokens, transfer tokenId=50 to user2, and approve tokenId=75 to user2.
+![test result](https://github.com/Rita94105/ERC721A/blob/main/img/gas%20usage%20-%20mint%20large%20number.png)
+
+### Conclusion 
+1. ERC721 Enumerable usually costs more gas than ERC721A in mint process because of for loop.
+2. ERC721A usually costs more gas than ERC721 Enumerable in transfer and approve process, because by transferring a tokenID that does not have an owner address.
+
+   The contract must create actions that include all tokenID’s in order to verify the original NFT owner. 
+
+   This is because the original owner has the right to move the token and set it to a new entity.
+   
+   Below we present a graph associated with this:
+   
+   The above results indicate that moving token IDs in the middle of a larger mint batch (i.e. t1, t2) costs more than moving token IDs at the end of the batch (i.e. t0, t4).
+
+**Reference:**
+[nextrope.com](https://nextrope.com/erc721-vs-erc721a-2/)
