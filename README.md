@@ -194,6 +194,8 @@ forge test --gas-report
    
    Below we present a graph associated with this:
    
+   ![image](https://raw.githubusercontent.com/Rita94105/ERC721A/main/img/ERC-721A%20transfer%20costs.webp)
+
    The above results indicate that moving token IDs in the middle of a larger mint batch (i.e. t1, t2) costs more than moving token IDs at the end of the batch (i.e. t0, t4).
 
 **Reference:**
